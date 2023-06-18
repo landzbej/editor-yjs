@@ -18,9 +18,10 @@ function App() {
     editorRef.current = editor;
 
     const doc = new Y.Doc();
-    // const provider = new WebrtcProvider("test-room", doc);
-    const provider = new WebsocketProvider('ws://localhost:1234', 'new-room', doc)
+
+    const provider = new WebsocketProvider('wss://localhost:1234', 'new-room', doc)
     // const wsProvider = new WebsocketProvider('wss://localhost:1234', 'my-roomname', doc, { WebSocketPolyfill: require('ws') })
+        // const provider = new WebrtcProvider("test-room", doc)
     const type = doc.getText("monaco");
     const binding = new MonacoBinding(type, editorRef.current.getModel(), new Set([editorRef.current]), provider.awareness)
     console.log("provider awareness", provider.awareness)
