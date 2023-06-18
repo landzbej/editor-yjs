@@ -19,7 +19,7 @@ function App() {
 
     const doc = new Y.Doc();
 
-    const provider = new WebsocketProvider('wss://159.89.82.244:1234', 'new-room', doc)
+    const provider = new WebsocketProvider('ws://159.89.82.244:1234', 'new-room', doc)
     // const provider = new WebsocketProvider('wss://159.89.82.244:8020', 'new-room', doc)
         // const provider = new WebrtcProvider("test-room", doc)
     const type = doc.getText("monaco");
