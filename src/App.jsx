@@ -5,7 +5,11 @@ import * as Y from "yjs"
 // import { WebrtcProvider } from "y-webrtc"
 import { WebsocketProvider } from 'y-websocket'
 import { MonacoBinding } from "y-monaco"
+// import ws from 'ws';
+// import dotenv from "dotenv";
 
+// dotenv.config()
+// console.log(process.env)
 
 function App() {
   const editorRef = useRef(null);
@@ -15,7 +19,8 @@ function App() {
 
     const doc = new Y.Doc();
     // const provider = new WebrtcProvider("test-room", doc);
-    const provider = new WebsocketProvider('wss://www.landzbergs.com', 'new-room', doc)
+    const provider = new WebsocketProvider('ws://localhost:1234', 'new-room', doc)
+    // const wsProvider = new WebsocketProvider('wss://localhost:1234', 'my-roomname', doc, { WebSocketPolyfill: require('ws') })
     const type = doc.getText("monaco");
     const binding = new MonacoBinding(type, editorRef.current.getModel(), new Set([editorRef.current]), provider.awareness)
     console.log("provider awareness", provider.awareness)
